@@ -1,0 +1,150 @@
+﻿@model IEnumerable<CarSharePlus.Shared.Models.Vehiculo>
+@using CarSharePlus.Shared.Models
+
+@{
+    ViewData["Title"] = "Lista de Vehículos";
+}
+
+<h2>Vehículos</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        <i class="fas fa-check-circle"></i> @TempData["SuccessMessage"]
+    </div>
+}
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        <i class="fas fa-exclamation-triangle"></i> @TempData["ErrorMessage"]
+    </div>
+}
+
+<!-- Filtros -->
+<form method="get" class="form-inline mb-3">
+    <input type="text" name="searchBrand" class="form-control mr-2" placeholder="Buscar por marca..." />
+
+    <select name="transmision" class="form-control mr-2">
+        <option value="">-- Transmisión --</option>
+        @foreach (var t in Enum.GetValues(typeof(TipoTransmision)))
+        {
+            <option value="@t">@t</option>
+        }
+    </select>
+
+    <select name="energia" class="form-control mr-2">
+        <option value="">-- Energía --</option>
+        @foreach (var e in Enum.GetValues(typeof(TipoEnergia)))
+        {
+            <option value="@e">@e</option>
+        }
+    </select>
+
+    <input type="number" name="anioDesde" class="form-control mr-2" placeholder="Año desde" min="1990" max="2050" />
+    <input type="number" name="anioHasta" class="form-control mr-2" placeholder="Año hasta" min="1990" max="2050" />
+
+    <select name="disponible" class="form-control mr-2">
+        <option value="">-- Estado --</option>
+        <option value="true">Disponible</option>
+        <option value="false">No disponible</option>
+    </select>
+
+    <button type="submit" class="btn btn-primary">
+        <i class="fas fa-search"></i> Filtrar
+    </button>
+</form>
+
+<p>
+    <a class="btn btn-success" href="@Url.Action("Create")">
+        <i class="fas fa-plus"></i> Crear Nuevo Vehículo
+    </a>
+</p>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Placa</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Año</th>
+                <th>Transmisión</th>
+                <th>Tipo de Energía</th>
+                <th>Autonomía</th>
+                <th>Consumo</th>
+                <th>Estado</th>
+                <th>Usuario</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Placa</td>
+                    <td>@item.Marca</td>
+                    <td>@item.Modelo</td>
+                    <td>@item.Anio</td>
+                    <td>@item.Transmision</td>
+                    <td>
+                        @switch (item.Energia)
+                        {
+                            case TipoEnergia.Gasolina:
+                                {
+                                    <text><i class="fas fa-gas-pump text-danger"></i> Gasolina</text>
+                                    ; break;
+                                }
+                            case TipoEnergia.Electrico:
+                                {
+
+                                    <text><i class="fas fa-bolt text-success"></i> Eléctrico</text>
+                                    ; break;
+                                }
+                            case TipoEnergia.Hibrido:
+                                {
+
+                                    <text><i class="fas fa-leaf text-warning"></i> Híbrido</text>
+                                    ; break;
+                                }
+                        }
+                    </td>
+                    <td>@(item.AutonomiaKm > 0 ? $"{item.AutonomiaKm} km" : "-")</td>
+                    <td>@(item.ConsumoPorKm > 0 ? $"{item.ConsumoPorKm} L/km" : "-")</td>
+                    <td>
+                        @if (item.Disponible)
+                        {
+                            <span class="badge badge-success"><i class="fas fa-check-circle"></i> Disponible</span>
+                        }
+                        else
+                        {
+                            <span class="badge badge-danger"><i class="fas fa-times-circle"></i> No disponible</span>
+                        }
+                    </td>
+                    <td>
+                        @if (item.Usuario != null)
+                        {
+                            <span class="badge badge-info">@item.Usuario.Nombre</span>
+                        }
+                        else
+                        {
+                            <span class="badge badge-secondary">No asignado</span>
+                        }
+                    </td>
+                    <td>
+                        <div class="btn-group" role="group">
+                            <a class="btn btn-info btn-sm" href="@Url.Action("Details", new { id = item.Id })">
+                                <i class="fas fa-info-circle"></i> Detalles
+                            </a>
+                            <a class="btn btn-warning btn-sm" href="@Url.Action("Edit", new { id = item.Id })">
+                                <i class="fas fa-edit"></i> Editar
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="@Url.Action("Delete", new { id = item.Id })">
+                                <i class="fas fa-trash"></i> Eliminar
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
