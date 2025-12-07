@@ -1,0 +1,90 @@
+﻿@model CarSharePlus.Shared.Models.Pago
+
+@{
+    ViewData["Title"] = "Detalles del Pago";
+}
+
+<h2>@ViewData["Title"]</h2>
+<hr />
+
+<div class="card mb-4">
+    <div class="card-header bg-dark text-white">
+        Información del Pago
+    </div>
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">Monto</dt>
+            <dd class="col-sm-9">@Model.Monto.ToString("C")</dd>
+
+            <dt class="col-sm-3">Fecha de Pago</dt>
+            <dd class="col-sm-9">@Model.FechaPago.ToString("dd/MM/yyyy HH:mm")</dd>
+
+            <dt class="col-sm-3">Método</dt>
+            <dd class="col-sm-9">@Model.Metodo</dd>
+
+            <dt class="col-sm-3">Confirmado</dt>
+            <dd class="col-sm-9">
+                @if (Model.Confirmado)
+                {
+                    <span class="badge bg-success">Sí</span>
+                }
+                else
+                {
+                    <span class="badge bg-danger">No</span>
+                }
+            </dd>
+        </dl>
+    </div>
+</div>
+
+<!-- Reserva asociada -->
+<div class="card">
+    <div class="card-header bg-primary text-white">
+        Reserva Asociada
+    </div>
+    <div class="card-body">
+        @if (Model.Reserva != null)
+        {
+            <dl class="row">
+                <dt class="col-sm-3">Vehículo</dt>
+                <dd class="col-sm-9">@Model.Reserva.DescripcionVehiculo</dd>
+
+                <dt class="col-sm-3">Fechas</dt>
+                <dd class="col-sm-9">@Model.Reserva.RangoFechas</dd>
+
+                <dt class="col-sm-3">Ubicación Inicio</dt>
+                <dd class="col-sm-9">@Model.Reserva.UbicacionInicio</dd>
+
+                <dt class="col-sm-3">Ubicación Fin</dt>
+                <dd class="col-sm-9">@Model.Reserva.UbicacionFin</dd>
+
+                <dt class="col-sm-3">Estado</dt>
+                <dd class="col-sm-9">
+                    @switch (Model.Reserva.Estado)
+                    {
+                        case CarSharePlus.Shared.Models.EstadoReserva.Pendiente:
+                            <span class="badge bg-warning">Pendiente</span>
+                            break;
+                        case CarSharePlus.Shared.Models.EstadoReserva.Activa:
+                            <span class="badge bg-success">Activa</span>
+                            break;
+                        case CarSharePlus.Shared.Models.EstadoReserva.Finalizada:
+                            <span class="badge bg-secondary">Finalizada</span>
+                            break;
+                        case CarSharePlus.Shared.Models.EstadoReserva.Cancelada:
+                            <span class="badge bg-danger">Cancelada</span>
+                            break;
+                    }
+                </dd>
+            </dl>
+        }
+        else
+        {
+            <p class="text-muted">No se encontró información de la reserva asociada.</p>
+        }
+    </div>
+</div>
+
+<hr />
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Editar</a>
+<a asp-action="Index" class="btn btn-secondary">Volver al listado</a>

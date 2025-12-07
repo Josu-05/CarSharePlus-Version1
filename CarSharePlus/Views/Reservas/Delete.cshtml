@@ -1,0 +1,23 @@
+﻿@model CarSharePlus.Shared.Models.Reserva
+
+@{
+    ViewData["Title"] = "Eliminar Reserva";
+}
+
+<h2>Eliminar Reserva</h2>
+
+<h4>¿Seguro que deseas eliminar esta reserva?</h4>
+<div>
+    <p><strong>Usuario:</strong> @Model.UsuarioId</p>
+    <p><strong>Vehículo:</strong> @Model.DescripcionVehiculo</p>
+    <p><strong>Fechas:</strong> @Model.RangoFechas</p>
+    <p><strong>Ubicación Inicio:</strong> @Model.UbicacionInicio</p>
+    <p><strong>Ubicación Fin:</strong> @Model.UbicacionFin</p>
+    <p><strong>Estado:</strong> @Model.Estado</p>
+</div>
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

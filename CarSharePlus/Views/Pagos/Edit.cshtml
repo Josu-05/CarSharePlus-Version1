@@ -1,0 +1,46 @@
+﻿@model CarSharePlus.Shared.Models.Pago
+
+@{
+    ViewData["Title"] = "Editar Pago";
+}
+
+<h2>Editar Pago</h2>
+
+<form asp-action="Edit">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label asp-for="ReservaId"></label>
+        <input asp-for="ReservaId" class="form-control" readonly />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Monto"></label>
+        <input asp-for="Monto" class="form-control" />
+        <span asp-validation-for="Monto" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Metodo"></label>
+        <select asp-for="Metodo" class="form-control">
+            <option>Tarjeta</option>
+            <option>Efectivo</option>
+            <option>Transferencia</option>
+        </select>
+        <span asp-validation-for="Metodo" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Confirmado"></label>
+        <input asp-for="Confirmado" type="checkbox" />
+    </div>
+
+    <button type="submit" class="btn btn-success">Guardar Cambios</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

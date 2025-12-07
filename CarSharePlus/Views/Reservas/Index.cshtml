@@ -1,0 +1,80 @@
+﻿@model IEnumerable<CarSharePlus.Shared.Models.Reserva>
+
+@{
+    ViewData["Title"] = "Reservas";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<hr />
+
+<table class="table table-striped table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>Usuario</th>
+            <th>Vehículo</th>
+            <th>Fechas</th>
+            <th>Ubicación Inicio</th>
+            <th>Ubicación Fin</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var reserva in Model)
+        {
+            <tr>
+                <!-- Usuario -->
+                <td>
+                    @if (reserva.Usuario != null)
+                    {
+                        @reserva.Usuario.Nombre
+                    }
+                    else
+                    {
+                        <span class="text-muted">Usuario #@reserva.UsuarioId</span>
+                    }
+                </td>
+
+                <!-- Vehículo -->
+                <td>@reserva.DescripcionVehiculo</td>
+
+                <!-- Fechas -->
+                <td>@reserva.RangoFechas</td>
+
+                <!-- Ubicaciones -->
+                <td>@reserva.UbicacionInicio</td>
+                <td>@reserva.UbicacionFin</td>
+
+                <!-- Estado con badge -->
+                <td>
+                    @switch (reserva.Estado)
+                    {
+                        case CarSharePlus.Shared.Models.EstadoReserva.Pendiente:
+                            <span class="badge bg-warning">Pendiente</span>
+                            break;
+                        case CarSharePlus.Shared.Models.EstadoReserva.Activa:
+                            <span class="badge bg-success">Activa</span>
+                            break;
+                        case CarSharePlus.Shared.Models.EstadoReserva.Finalizada:
+                            <span class="badge bg-secondary">Finalizada</span>
+                            break;
+                        case CarSharePlus.Shared.Models.EstadoReserva.Cancelada:
+                            <span class="badge bg-danger">Cancelada</span>
+                            break;
+                    }
+                </td>
+
+                <!-- Acciones -->
+                <td>
+                    <a asp-action="Edit" asp-route-id="@reserva.Id" class="btn btn-sm btn-warning">Editar</a>
+                    <a asp-action="Delete" asp-route-id="@reserva.Id" class="btn btn-sm btn-danger">Eliminar</a>
+                    <a asp-action="Details" asp-route-id="@reserva.Id" class="btn btn-sm btn-info">Detalles</a>
+                    <a asp-controller="Pagos" asp-action="Create" asp-route-reservaId="@reserva.Id" class="btn btn-sm btn-primary">Registrar Pago</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Create" class="btn btn-primary">Nueva Reserva</a>

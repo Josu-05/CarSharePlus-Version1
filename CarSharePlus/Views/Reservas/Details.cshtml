@@ -1,0 +1,103 @@
+﻿@model CarSharePlus.Shared.Models.Reserva
+
+@{
+    ViewData["Title"] = "Detalles de la Reserva";
+}
+
+<h2>@ViewData["Title"]</h2>
+<hr />
+
+<div class="card mb-4">
+    <div class="card-header bg-dark text-white">
+        Información de la Reserva
+    </div>
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">Usuario</dt>
+            <dd class="col-sm-9">
+                @(Model.Usuario != null ? Model.Usuario.Nombre : $"Usuario #{Model.UsuarioId}")
+            </dd>
+
+            <dt class="col-sm-3">Vehículo</dt>
+            <dd class="col-sm-9">@Model.DescripcionVehiculo</dd>
+
+            <dt class="col-sm-3">Fechas</dt>
+            <dd class="col-sm-9">@Model.RangoFechas</dd>
+
+            <dt class="col-sm-3">Ubicación Inicio</dt>
+            <dd class="col-sm-9">@Model.UbicacionInicio</dd>
+
+            <dt class="col-sm-3">Ubicación Fin</dt>
+            <dd class="col-sm-9">@Model.UbicacionFin</dd>
+
+            <dt class="col-sm-3">Estado</dt>
+            <dd class="col-sm-9">
+                @switch (Model.Estado)
+                {
+                    case CarSharePlus.Shared.Models.EstadoReserva.Pendiente:
+                        <span class="badge bg-warning">Pendiente</span>
+                        break;
+                    case CarSharePlus.Shared.Models.EstadoReserva.Activa:
+                        <span class="badge bg-success">Activa</span>
+                        break;
+                    case CarSharePlus.Shared.Models.EstadoReserva.Finalizada:
+                        <span class="badge bg-secondary">Finalizada</span>
+                        break;
+                    case CarSharePlus.Shared.Models.EstadoReserva.Cancelada:
+                        <span class="badge bg-danger">Cancelada</span>
+                        break;
+                }
+            </dd>
+        </dl>
+    </div>
+</div>
+
+<!-- Pagos asociados -->
+<div class="card">
+    <div class="card-header bg-primary text-white">
+        Pagos Asociados
+    </div>
+    <div class="card-body">
+        @if (Model.Pagos != null && Model.Pagos.Any())
+        {
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Monto</th>
+                        <th>Fecha</th>
+                        <th>Método</th>
+                        <th>Confirmado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var pago in Model.Pagos)
+                    {
+                        <tr>
+                            <td>@pago.Monto.ToString("C")</td>
+                            <td>@pago.FechaPago.ToString("dd/MM/yyyy HH:mm")</td>
+                            <td>@pago.Metodo</td>
+                            <td>
+                                @if (pago.Confirmado)
+                                {
+                                    <span class="badge bg-success">Sí</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-danger">No</span>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p class="text-muted">No hay pagos registrados para esta reserva.</p>
+        }
+    </div>
+</div>
+
+<hr />
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Editar</a>
+<a asp-action="Index" class="btn btn-secondary">Volver al listado</a>

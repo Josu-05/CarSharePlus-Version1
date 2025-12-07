@@ -1,0 +1,19 @@
+﻿@model CarSharePlus.Shared.Models.Solicitud
+
+<h2>Detalles de Solicitud</h2>
+
+<dl class="row">
+    <dt class="col-sm-2">Usuario</dt>
+    <dd class="col-sm-10">@Model.Usuario?.Nombre</dd>
+
+    <dt class="col-sm-2">Tipo</dt>
+    <dd class="col-sm-10">@Model.Tipo</dd>
+
+    <dt class="col-sm-2">Descripción</dt>
+    <dd class="col-sm-10">@Model.Descripcion</dd>
+
+    <dt class="col-sm-2">Fecha</dt>
+    <dd class="col-sm-10">@Model.Fecha.ToShortDateString()</dd>
+</dl>
+
+<a asp-action="Index" class="btn btn-secondary">Volver</a>

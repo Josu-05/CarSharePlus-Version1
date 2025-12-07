@@ -1,0 +1,60 @@
+﻿@using CarSharePlus.Shared.Models
+@model CarSharePlus.Shared.Models.Reserva
+
+@{
+    ViewData["Title"] = "Crear Reserva";
+}
+
+<h2>Crear Reserva</h2>
+
+<form asp-action="Create">
+    <div class="form-group">
+        <label asp-for="UsuarioId"></label>
+        <input asp-for="UsuarioId" class="form-control" />
+        <span asp-validation-for="UsuarioId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="VehiculoId"></label>
+        <input asp-for="VehiculoId" class="form-control" />
+        <span asp-validation-for="VehiculoId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="FechaInicio"></label>
+        <input asp-for="FechaInicio" class="form-control" type="datetime-local" />
+        <span asp-validation-for="FechaInicio" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="FechaFin"></label>
+        <input asp-for="FechaFin" class="form-control" type="datetime-local" />
+        <span asp-validation-for="FechaFin" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="UbicacionInicio"></label>
+        <input asp-for="UbicacionInicio" class="form-control" />
+        <span asp-validation-for="UbicacionInicio" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="UbicacionFin"></label>
+        <input asp-for="UbicacionFin" class="form-control" />
+        <span asp-validation-for="UbicacionFin" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Estado"></label>
+        <select asp-for="Estado" asp-items="Html.GetEnumSelectList<EstadoReserva>()" class="form-control"></select>
+        <span asp-validation-for="Estado" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

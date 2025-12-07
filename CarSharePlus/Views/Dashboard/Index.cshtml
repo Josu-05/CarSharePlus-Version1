@@ -1,0 +1,102 @@
+﻿@{
+    ViewData["Title"] = "Dashboard de Evaluaciones";
+}
+
+<h2>Dashboard de Evaluaciones</h2>
+
+<div class="row">
+    <!-- Promedio por vehículo -->
+    <div class="col-md-6">
+        <h4>Promedio de Calificaciones por Vehículo</h4>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Vehículo</th>
+                    <th>Promedio</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in ViewBag.PromedioPorVehiculo)
+                {
+                    <tr>
+                        <td>@item.Vehiculo</td>
+                        <td>@item.Promedio.ToString("0.0")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Top usuarios -->
+    <div class="col-md-6">
+        <h4>Top 3 Usuarios más Activos</h4>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Usuario</th>
+                    <th>Total Evaluaciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in ViewBag.TopUsuarios)
+                {
+                    <tr>
+                        <td>@item.Usuario</td>
+                        <td>@item.Total</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<hr />
+
+<!-- Distribución de calificaciones -->
+<div class="row">
+    <div class="col-md-12">
+        <h4>Distribución de Calificaciones</h4>
+        <canvas id="chartCalificaciones"></canvas>
+    </div>
+</div>
+
+<div class="row"> 
+    <div class="col-md-12"> 
+        <h4>Vehículos Recomendados (Top 5)</h4> 
+        <table class="table table-hover"> 
+            <thead> 
+                <tr> 
+                    <th>Vehículo</th> 
+                    <th>Promedio de Calificación</th> 
+                </tr> 
+            </thead> 
+                <tbody> 
+                    @foreach (var item in ViewBag.RankingVehiculos) 
+                    {
+                        <tr> 
+                            <td>@item.Vehiculo</td> 
+                            <td>@item.Promedio.ToString("0.0")</td> 
+                        </tr>
+                    }
+                </tbody> 
+        </table> 
+    </div> 
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        var ctx = document.getElementById('chartCalificaciones').getContext('2d');
+        var chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [@string.Join(",", ((IEnumerable<dynamic>)ViewBag.Distribucion).Select(d => d.Calificacion))],
+                datasets: [{
+                    label: 'Cantidad',
+                    data: [@string.Join(",", ((IEnumerable<dynamic>)ViewBag.Distribucion).Select(d => d.Total))],
+                    backgroundColor: 'rgba(54, 162, 235, 0.6)'
+                }]
+            }
+        });
+    </script>
+}

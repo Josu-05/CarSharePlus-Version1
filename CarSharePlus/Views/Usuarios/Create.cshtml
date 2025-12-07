@@ -1,0 +1,60 @@
+﻿@model CarSharePlus.Shared.Models.Usuario
+
+@{
+    ViewData["Title"] = "Crear Usuario";
+}
+
+<h2>Crear Usuario</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        <i class="fas fa-check-circle"></i> @TempData["SuccessMessage"]
+    </div>
+}
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        <i class="fas fa-exclamation-triangle"></i> @TempData["ErrorMessage"]
+    </div>
+}
+
+<div class="alert alert-info">
+    <i class="fas fa-info-circle"></i>
+    <strong>Información:</strong> Complete los datos del nuevo usuario.
+</div>
+
+<form asp-action="Create">
+    <!-- Datos básicos -->
+    <div class="form-group">
+        <label asp-for="Nombre" class="control-label"></label>
+        <input asp-for="Nombre" class="form-control" placeholder="Ej. Juan Pérez" />
+        <span asp-validation-for="Nombre" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Correo" class="control-label"></label>
+        <input asp-for="Correo" class="form-control" type="email" placeholder="Ej. usuario@correo.com" />
+        <span asp-validation-for="Correo" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Telefono" class="control-label"></label>
+        <input asp-for="Telefono" class="form-control" type="tel" placeholder="Ej. +593987654321" />
+        <span asp-validation-for="Telefono" class="text-danger"></span>
+    </div>
+
+    <!-- Botones -->
+    <button type="submit" class="btn btn-success">
+        <i class="fas fa-user-plus"></i> Crear
+    </button>
+    <a asp-action="Index" class="btn btn-secondary">
+        <i class="fas fa-arrow-left"></i> Volver
+    </a>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
