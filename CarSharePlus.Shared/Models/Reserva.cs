@@ -1,5 +1,8 @@
 ﻿using System;
+<<<<<<< HEAD
 using System.Collections.Generic;
+=======
+>>>>>>> 875207af3e982a6adcdb3d4de98f46b58b45ec4a
 using System.ComponentModel.DataAnnotations;
 
 namespace CarSharePlus.Shared.Models
@@ -33,9 +36,12 @@ namespace CarSharePlus.Shared.Models
         [Display(Name = "Estado de la reserva")]
         public EstadoReserva Estado { get; set; } = EstadoReserva.Pendiente;
 
+<<<<<<< HEAD
         // Relación con pagos
         public ICollection<Pago> Pagos { get; set; } = new List<Pago>();
 
+=======
+>>>>>>> 875207af3e982a6adcdb3d4de98f46b58b45ec4a
         // 🔧 Propiedades calculadas para mostrar en la UI
         public string RangoFechas => $"{FechaInicio:dd/MM/yyyy HH:mm} - {FechaFin:dd/MM/yyyy HH:mm}";
         public string DescripcionVehiculo => Vehiculo != null ? $"{Vehiculo.Marca} {Vehiculo.Modelo} ({Vehiculo.Placa})" : "Vehículo no asignado";
@@ -48,4 +54,8 @@ namespace CarSharePlus.Shared.Models
         Finalizada,
         Cancelada
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 875207af3e982a6adcdb3d4de98f46b58b45ec4a

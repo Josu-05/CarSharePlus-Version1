@@ -1,11 +1,19 @@
 ﻿using System;
+<<<<<<< HEAD
 using System.ComponentModel.DataAnnotations;
+=======
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+>>>>>>> 875207af3e982a6adcdb3d4de98f46b58b45ec4a
 
 namespace CarSharePlus.Shared.Models
 {
     public class Pago
     {
         public int Id { get; set; }
+<<<<<<< HEAD
 
         [Required(ErrorMessage = "La reserva asociada es obligatoria")]
         public int ReservaId { get; set; }
@@ -26,4 +34,13 @@ namespace CarSharePlus.Shared.Models
         [Display(Name = "Pago confirmado")]
         public bool Confirmado { get; set; }
     }
+=======
+        public int ReservaId { get; set; }
+        public decimal Monto { get; set; }
+        public DateTime FechaPago { get; set; }
+        public string Metodo { get; set; } = "Tarjeta";
+        public bool Confirmado { get; set; }
+    }
+
+>>>>>>> 875207af3e982a6adcdb3d4de98f46b58b45ec4a
 }

@@ -17,11 +17,16 @@ namespace CarSharePlus.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
+<<<<<<< HEAD
                 .HasAnnotation("ProductVersion", "8.0.22")
+=======
+                .HasAnnotation("ProductVersion", "8.0.10")
+>>>>>>> 875207af3e982a6adcdb3d4de98f46b58b45ec4a
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+<<<<<<< HEAD
             modelBuilder.Entity("CarSharePlus.Shared.Models.Pago", b =>
                 {
                     b.Property<int>("Id")
@@ -95,6 +100,8 @@ namespace CarSharePlus.Migrations
                     b.ToTable("Reservas");
                 });
 
+=======
+>>>>>>> 875207af3e982a6adcdb3d4de98f46b58b45ec4a
             modelBuilder.Entity("CarSharePlus.Shared.Models.Usuario", b =>
                 {
                     b.Property<int>("Id")
@@ -186,6 +193,7 @@ namespace CarSharePlus.Migrations
                     b.ToTable("Vehiculos");
                 });
 
+<<<<<<< HEAD
             modelBuilder.Entity("CarSharePlus.Shared.Models.Pago", b =>
                 {
                     b.HasOne("CarSharePlus.Shared.Models.Reserva", "Reserva")
@@ -216,6 +224,8 @@ namespace CarSharePlus.Migrations
                     b.Navigation("Vehiculo");
                 });
 
+=======
+>>>>>>> 875207af3e982a6adcdb3d4de98f46b58b45ec4a
             modelBuilder.Entity("CarSharePlus.Shared.Models.Vehiculo", b =>
                 {
                     b.HasOne("CarSharePlus.Shared.Models.Usuario", "Usuario")

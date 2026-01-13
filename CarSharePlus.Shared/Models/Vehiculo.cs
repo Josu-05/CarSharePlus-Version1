@@ -1,5 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
+<<<<<<< HEAD
 using System.Collections.Generic;
+=======
+>>>>>>> 875207af3e982a6adcdb3d4de98f46b58b45ec4a
 using System.ComponentModel.DataAnnotations;
 
 namespace CarSharePlus.Shared.Models
@@ -57,7 +60,10 @@ namespace CarSharePlus.Shared.Models
         public Usuario? Usuario { get; set; }
         public double Latitud { get; set; }
         public double Longitud { get; set; }
+<<<<<<< HEAD
 
         public ICollection<Reserva> Reservas { get; set; } = new List<Reserva>();
+=======
+>>>>>>> 875207af3e982a6adcdb3d4de98f46b58b45ec4a
     }
 }

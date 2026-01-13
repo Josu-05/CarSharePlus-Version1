@@ -21,7 +21,11 @@ namespace CarSharePlus.Shared.Models
         public string Telefono { get; set; }
 
         // Relación: un usuario puede tener varios vehículos
+<<<<<<< HEAD
         public ICollection<Vehiculo> Vehiculos { get; set; } = new List<Vehiculo>(); 
         public ICollection<Reserva> Reservas { get; set; } = new List<Reserva>();
+=======
+        public ICollection<Vehiculo> Vehiculos { get; set; } = new List<Vehiculo>();
+>>>>>>> 875207af3e982a6adcdb3d4de98f46b58b45ec4a
     }
 }
