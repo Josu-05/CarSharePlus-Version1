@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CarSharePlus.Mobile.Pages.ColorsPage"
+             Title="Paleta de Colores">
+
+    <VerticalStackLayout Padding="20" Spacing="10">
+        <Label Text="PrimaryColor" />
+        <BoxView BackgroundColor="{StaticResource PrimaryColor}" HeightRequest="50" />
+
+        <Label Text="SecondaryColor" />
+        <BoxView BackgroundColor="{StaticResource SecondaryColor}" HeightRequest="50" />
+
+        <Label Text="UnselectedColor" />
+        <BoxView BackgroundColor="{StaticResource UnselectedColor}" HeightRequest="50" />
+    </VerticalStackLayout>
+
+</ContentPage>

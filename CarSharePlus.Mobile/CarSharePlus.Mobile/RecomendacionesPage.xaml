@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CarSharePlus.Mobile.RecomendacionesPage"
+             Title="RecomendacionesPage">
+    <VerticalStackLayout Padding="20">
+        <Label Text="Vehículos Recomendados" FontSize="24" FontAttributes="Bold" />
+
+        <CollectionView ItemsSource="{Binding VehiculosRecomendados}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame BorderColor="LightGray" Margin="5">
+                        <VerticalStackLayout>
+                            <Label Text="Placa: {Binding Placa}" FontAttributes="Bold" />
+                            <Label Text="Promedio: {Binding Promedio}" />
+                            <Label Text="Transmisión: {Binding Transmision}" />
+                            <Label Text="Energía: {Binding TipoEnergia}" />
+                            <Label Text="Autonomía: {Binding Autonomia} km" />
+                            <Label Text="Consumo: {Binding Consumo} L/100km" />
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+
+</ContentPage>

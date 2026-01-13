@@ -1,0 +1,27 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
+             x:Class="CarSharePlus.Mobile.MapasPage"
+             Title="Mapa de Vehículos">
+
+    <Grid RowDefinitions="Auto,*" Padding="10">
+
+        <!-- Encabezado -->
+        <Label Text="Ubicación y Vehículos Disponibles"
+               FontSize="18"
+               FontAttributes="Bold"
+               HorizontalOptions="Center"
+               Margin="0,0,0,10" />
+
+        <!-- Mapa -->
+        <maps:Map x:Name="map"
+                  Grid.Row="1"
+                  MapType="Street"
+                  IsShowingUser="True"
+                  HeightRequest="400"
+                  WidthRequest="400"
+                  VerticalOptions="FillAndExpand"
+                  HorizontalOptions="FillAndExpand" />
+
+    </Grid>
+</ContentPage>

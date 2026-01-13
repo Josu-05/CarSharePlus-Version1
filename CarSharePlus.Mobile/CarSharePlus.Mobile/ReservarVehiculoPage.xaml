@@ -1,0 +1,30 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:CarSharePlus.Mobile.ViewModels"
+             x:Class="CarSharePlus.Mobile.Pages.ReservarVehiculoPage">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+            <Label Text="Reservar Vehículo" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" />
+
+            <Picker Title="Selecciona un vehículo"
+                    ItemsSource="{Binding VehiculosDisponibles}"
+                    ItemDisplayBinding="{Binding Placa}"
+                    SelectedItem="{Binding VehiculoSeleccionado}" />
+
+            <Label Text="Fecha y hora de inicio" />
+            <DatePicker Date="{Binding FechaInicio}" />
+            <TimePicker Time="{Binding FechaInicio.TimeOfDay}" />
+
+            <Label Text="Fecha y hora de fin" />
+            <DatePicker Date="{Binding FechaFin}" />
+            <TimePicker Time="{Binding FechaFin.TimeOfDay}" />
+
+            <Button Text="Confirmar Reserva"
+                    Command="{Binding CrearReservaCommand}"
+                    BackgroundColor="#007AFF"
+                    TextColor="White"
+                    CornerRadius="10" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

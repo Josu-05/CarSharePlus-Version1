@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CarSharePlus.Mobile.PerfilPage"
+             Title="PerfilPage">
+    <VerticalStackLayout Padding="20">
+        <Label Text="Mi Perfil" FontSize="24" FontAttributes="Bold" />
+        <Label Text="{Binding Usuario.Nombre}" />
+        <Label Text="{Binding Usuario.Correo}" />
+        <Label Text="{Binding Usuario.Telefono}" />
+        <Label Text="Vehículo Asignado" FontSize="20" FontAttributes="Bold" Margin="0,20,0,0"/>
+        <Label Text="Placa: {Binding Vehiculo.Placa}" />
+        <Label Text="Transmisión: {Binding Vehiculo.Transmision}" />
+        <Label Text="Energía: {Binding Vehiculo.TipoEnergia}" />
+        <Label Text="Autonomía: {Binding Vehiculo.Autonomia} km" />
+        <Label Text="Consumo: {Binding Vehiculo.Consumo} L/100km" />
+        <Button Text="Solicitar Edición" Command="{Binding SolicitarEdicionCommand}" />
+        <Button Text="Solicitar Eliminación" Command="{Binding SolicitarEliminacionCommand}" BackgroundColor="Red" TextColor="White" />
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:microcharts="clr-namespace:Microcharts.Maui;assembly=Microcharts.Maui"
+             x:Class="CarSharePlus.Mobile.Pages.DashboardPage">
+
+    <VerticalStackLayout Padding="20" Spacing="15">
+
+        <!-- Título -->
+        <Label Text="📊 Estadísticas de Reservas"
+               FontSize="24"
+               FontAttributes="Bold"
+               HorizontalOptions="Center"/>
+
+        <!-- Métricas en texto -->
+        <Label Text="{Binding TotalReservas, StringFormat='Total: {0}'}"/>
+        <Label Text="{Binding Activas, StringFormat='Activas: {0}'}"/>
+        <Label Text="{Binding Finalizadas, StringFormat='Finalizadas: {0}'}"/>
+        <Label Text="{Binding Canceladas, StringFormat='Canceladas: {0}'}"/>
+        <Label Text="{Binding PromedioDuracionHoras, StringFormat='Promedio duración: {0:F1} horas'}"/>
+
+        <!-- Gráfico de pastel -->
+        <microcharts:ChartView Chart="{Binding Chart}"
+                               HeightRequest="250"
+                               WidthRequest="250"
+                               HorizontalOptions="Center"/>
+
+    </VerticalStackLayout>
+</ContentPage>
