@@ -1,8 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-<<<<<<< HEAD
 using System.Collections.Generic;
-=======
->>>>>>> 875207af3e982a6adcdb3d4de98f46b58b45ec4a
 using System.ComponentModel.DataAnnotations;
 
 namespace CarSharePlus.Shared.Models
@@ -17,7 +14,8 @@ namespace CarSharePlus.Shared.Models
     {
         Gasolina,
         Electrico,
-        Hibrido
+        Hibrido,
+        Diesel // opcional si lo necesitas
     }
 
     [Index(nameof(Placa), IsUnique = true)]
@@ -50,7 +48,7 @@ namespace CarSharePlus.Shared.Models
         [Range(0, 2000, ErrorMessage = "La autonomía debe estar entre 0 y 2000 km")]
         public int AutonomiaKm { get; set; }
 
-        [Range(0.1, 50, ErrorMessage = "El consumo debe estar entre 0.1 y 50 por km")]
+        [Range(0, 50, ErrorMessage = "El consumo debe estar entre 0 y 50 por km")]
         public double ConsumoPorKm { get; set; }
 
         [Display(Name = "Disponible")]
@@ -58,12 +56,14 @@ namespace CarSharePlus.Shared.Models
 
         public int? UsuarioId { get; set; }
         public Usuario? Usuario { get; set; }
-        public double Latitud { get; set; }
-        public double Longitud { get; set; }
-<<<<<<< HEAD
 
+        [Range(-90, 90, ErrorMessage = "La latitud debe estar entre -90 y 90")]
+        public double Latitud { get; set; }
+
+        [Range(-180, 180, ErrorMessage = "La longitud debe estar entre -180 y 180")]
+        public double Longitud { get; set; }
+
+        // Relación con reservas
         public ICollection<Reserva> Reservas { get; set; } = new List<Reserva>();
-=======
->>>>>>> 875207af3e982a6adcdb3d4de98f46b58b45ec4a
     }
 }

@@ -6,11 +6,8 @@
         {
             InitializeComponent();
 
-            // ✅ Forzar tema claro
-            Current.UserAppTheme = AppTheme.Light;
-
-            // Si prefieres forzar tema oscuro, usa:
-            // Current.UserAppTheme = AppTheme.Dark;
+            // Tema dinámico según sistema
+            Current.UserAppTheme = AppTheme.Unspecified;
         }
 
         protected override Window CreateWindow(IActivationState? activationState)

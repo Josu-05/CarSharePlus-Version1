@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36717.8
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarSharePlus", "CarSharePlus\CarSharePlus.csproj", "{9294B52B-9961-4EEB-899B-6179403930DE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarSharePlus", "CarSharePlus/CarSharePlus.csproj", "{9294B52B-9961-4EEB-899B-6179403930DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarSharePlus.Mobile", "..\CarSharePlus.Mobile\CarSharePlus.Mobile\CarSharePlus.Mobile.csproj", "{179ED6C4-9A33-A506-F3C3-188842A93B99}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarSharePlus.Mobile", "CarSharePlus.Mobile/CarSharePlus.Mobile/CarSharePlus.Mobile.csproj","{179ED6C4-9A33-A506-F3C3-188842A93B99}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarSharePlus.Shared", "CarSharePlus.Shared\CarSharePlus.Shared.csproj", "{4C03028E-4B8A-41E6-A38F-197463ED2142}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarSharePlus.Shared", "CarSharePlus.Shared/CarSharePlus.Shared.csproj", "{4C03028E-4B8A-41E6-A38F-197463ED2142}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

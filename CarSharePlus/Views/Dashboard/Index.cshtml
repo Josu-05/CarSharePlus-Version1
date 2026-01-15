@@ -90,12 +90,22 @@
         var chart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: [@string.Join(",", ((IEnumerable<dynamic>)ViewBag.Distribucion).Select(d => d.Calificacion))],
+                labels: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(
+                    ((IEnumerable<dynamic>)ViewBag.Distribucion).Select(d => d.Calificacion))),
                 datasets: [{
                     label: 'Cantidad',
-                    data: [@string.Join(",", ((IEnumerable<dynamic>)ViewBag.Distribucion).Select(d => d.Total))],
+                    data: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(
+                        ((IEnumerable<dynamic>)ViewBag.Distribucion).Select(d => d.Total))),
                     backgroundColor: 'rgba(54, 162, 235, 0.6)'
                 }]
+            },
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Distribución de Calificaciones'
+                    }
+                }
             }
         });
     </script>

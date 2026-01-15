@@ -1,6 +1,6 @@
 ﻿using CarSharePlus.Mobile.Pages;
-using CarSharePlus.Mobile.ViewModels;
-using CarSharePlus.Mobile.Services;
+using CarSharePlus.Shared.ViewModels;
+using CarSharePlus.Shared.Services;
 using Microsoft.Extensions.Logging;
 
 namespace CarSharePlus.Mobile;
@@ -20,19 +20,28 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             });
 
-        // ✅ Registro de servicios y ViewModels
-        builder.Services.AddSingleton<ReservaService>();
-        builder.Services.AddSingleton<PagoService>();
+        // ✅ Registro de servicios (interfaces → implementación)
+        builder.Services.AddSingleton<IReservaService, ReservaService>();
+        builder.Services.AddSingleton<IPagoService, PagoService>();
         builder.Services.AddSingleton<EstadisticasService>();
 
+        // ✅ Registro de ViewModels y Pages
         builder.Services.AddTransient<ReservaViewModel>();
         builder.Services.AddTransient<ReservarVehiculoPage>();
         builder.Services.AddTransient<ReservasViewModel>();
         builder.Services.AddTransient<ReservasPage>();
-
-        // ✅ Registro del Dashboard
         builder.Services.AddTransient<DashboardViewModel>();
         builder.Services.AddTransient<DashboardPage>();
+
+        // 🔧 Faltan otros registros (ejemplo)
+        builder.Services.AddTransient<PerfilViewModel>();
+        builder.Services.AddTransient<PerfilPage>();
+        builder.Services.AddTransient<PagosViewModel>();
+        builder.Services.AddTransient<PagosPage>();
+        builder.Services.AddTransient<EvaluacionesViewModel>();
+        builder.Services.AddTransient<EvaluacionesPage>();
+        builder.Services.AddTransient<RecomendacionesViewModel>();
+        builder.Services.AddTransient<RecomendacionesPage>();
 
 #if DEBUG
         builder.Logging.AddDebug();

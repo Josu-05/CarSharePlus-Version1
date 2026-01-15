@@ -1,11 +1,12 @@
-﻿using CarSharePlus.Data;
+﻿using System.Runtime.InteropServices;
+using CarSharePlus.Data;
 using CarSharePlus.Shared.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace CarSharePlus.Controllers.Api
 {
-    [Route("api/[controller]")]
+    [Out("api/[controller]")]
     [ApiController]
     public class ReservasApiController : ControllerBase
     {

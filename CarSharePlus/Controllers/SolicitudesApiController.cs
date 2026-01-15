@@ -1,5 +1,6 @@
-﻿using CarSharePlus.Data;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using CarSharePlus.Shared.Models;
+using CarSharePlus.Data;
 
 namespace CarSharePlus.Controllers
 {

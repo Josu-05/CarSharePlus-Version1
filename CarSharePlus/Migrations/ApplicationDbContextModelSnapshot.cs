@@ -17,229 +17,219 @@ namespace CarSharePlus.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-<<<<<<< HEAD
                 .HasAnnotation("ProductVersion", "8.0.22")
-=======
-                .HasAnnotation("ProductVersion", "8.0.10")
->>>>>>> 875207af3e982a6adcdb3d4de98f46b58b45ec4a
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-<<<<<<< HEAD
             modelBuilder.Entity("CarSharePlus.Shared.Models.Pago", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<bool>("Confirmado")
-                        .HasColumnType("bit");
+                b.Property<bool>("Confirmado")
+                    .HasColumnType("bit");
 
-                    b.Property<DateTime>("FechaPago")
-                        .HasColumnType("datetime2");
+                b.Property<DateTime>("FechaPago")
+                    .HasColumnType("datetime2");
 
-                    b.Property<string>("Metodo")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                b.Property<string>("Metodo")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("Monto")
-                        .HasColumnType("decimal(18,2)");
+                b.Property<decimal>("Monto")
+                    .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("ReservaId")
-                        .HasColumnType("int");
+                b.Property<int>("ReservaId")
+                    .HasColumnType("int");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.HasIndex("ReservaId");
+                b.HasIndex("ReservaId");
 
-                    b.ToTable("Pagos");
-                });
+                b.ToTable("Pagos");
+            });
 
             modelBuilder.Entity("CarSharePlus.Shared.Models.Reserva", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("Estado")
-                        .HasColumnType("int");
+                b.Property<int>("Estado")
+                    .HasColumnType("int");
 
-                    b.Property<DateTime>("FechaFin")
-                        .HasColumnType("datetime2");
+                b.Property<DateTime>("FechaFin")
+                    .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("FechaInicio")
-                        .HasColumnType("datetime2");
+                b.Property<DateTime>("FechaInicio")
+                    .HasColumnType("datetime2");
 
-                    b.Property<string>("UbicacionFin")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                b.Property<string>("UbicacionFin")
+                    .IsRequired()
+                    .HasMaxLength(200)
+                    .HasColumnType("nvarchar(200)");
 
-                    b.Property<string>("UbicacionInicio")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                b.Property<string>("UbicacionInicio")
+                    .IsRequired()
+                    .HasMaxLength(200)
+                    .HasColumnType("nvarchar(200)");
 
-                    b.Property<int>("UsuarioId")
-                        .HasColumnType("int");
+                b.Property<int>("UsuarioId")
+                    .HasColumnType("int");
 
-                    b.Property<int>("VehiculoId")
-                        .HasColumnType("int");
+                b.Property<int>("VehiculoId")
+                    .HasColumnType("int");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.HasIndex("UsuarioId");
+                b.HasIndex("UsuarioId");
 
-                    b.HasIndex("VehiculoId");
+                b.HasIndex("VehiculoId");
 
-                    b.ToTable("Reservas");
-                });
+                b.ToTable("Reservas");
+            });
 
-=======
->>>>>>> 875207af3e982a6adcdb3d4de98f46b58b45ec4a
             modelBuilder.Entity("CarSharePlus.Shared.Models.Usuario", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Correo")
-                        .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
+                b.Property<string>("Correo")
+                    .IsRequired()
+                    .HasMaxLength(150)
+                    .HasColumnType("nvarchar(150)");
 
-                    b.Property<string>("Nombre")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                b.Property<string>("Nombre")
+                    .IsRequired()
+                    .HasMaxLength(100)
+                    .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("Telefono")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                b.Property<string>("Telefono")
+                    .IsRequired()
+                    .HasMaxLength(20)
+                    .HasColumnType("nvarchar(20)");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.HasIndex("Correo")
-                        .IsUnique();
+                b.HasIndex("Correo")
+                    .IsUnique();
 
-                    b.ToTable("Usuarios");
-                });
+                b.ToTable("Usuarios");
+            });
 
             modelBuilder.Entity("CarSharePlus.Shared.Models.Vehiculo", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("Anio")
-                        .HasColumnType("int");
+                b.Property<int>("Anio")
+                    .HasColumnType("int");
 
-                    b.Property<int>("AutonomiaKm")
-                        .HasColumnType("int");
+                b.Property<int>("AutonomiaKm")
+                    .HasColumnType("int");
 
-                    b.Property<double>("ConsumoPorKm")
-                        .HasColumnType("float");
+                b.Property<double>("ConsumoPorKm")
+                    .HasColumnType("float");
 
-                    b.Property<bool>("Disponible")
-                        .HasColumnType("bit");
+                b.Property<bool>("Disponible")
+                    .HasColumnType("bit");
 
-                    b.Property<int>("Energia")
-                        .HasColumnType("int");
+                b.Property<int>("Energia")
+                    .HasColumnType("int");
 
-                    b.Property<double>("Latitud")
-                        .HasColumnType("float");
+                b.Property<double>("Latitud")
+                    .HasColumnType("float");
 
-                    b.Property<double>("Longitud")
-                        .HasColumnType("float");
+                b.Property<double>("Longitud")
+                    .HasColumnType("float");
 
-                    b.Property<string>("Marca")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                b.Property<string>("Marca")
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("Modelo")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                b.Property<string>("Modelo")
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("Placa")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
+                b.Property<string>("Placa")
+                    .IsRequired()
+                    .HasMaxLength(10)
+                    .HasColumnType("nvarchar(10)");
 
-                    b.Property<int>("Transmision")
-                        .HasColumnType("int");
+                b.Property<int>("Transmision")
+                    .HasColumnType("int");
 
-                    b.Property<int?>("UsuarioId")
-                        .HasColumnType("int");
+                b.Property<int?>("UsuarioId")
+                    .HasColumnType("int");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.HasIndex("Placa")
-                        .IsUnique();
+                b.HasIndex("Placa")
+                    .IsUnique();
 
-                    b.HasIndex("UsuarioId");
+                b.HasIndex("UsuarioId");
 
-                    b.ToTable("Vehiculos");
-                });
+                b.ToTable("Vehiculos");
+            });
 
-<<<<<<< HEAD
             modelBuilder.Entity("CarSharePlus.Shared.Models.Pago", b =>
-                {
-                    b.HasOne("CarSharePlus.Shared.Models.Reserva", "Reserva")
-                        .WithMany()
-                        .HasForeignKey("ReservaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+            {
+                b.HasOne("CarSharePlus.Shared.Models.Reserva", "Reserva")
+                    .WithMany("Pagos")
+                    .HasForeignKey("ReservaId")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
 
-                    b.Navigation("Reserva");
-                });
+                b.Navigation("Reserva");
+            });
 
             modelBuilder.Entity("CarSharePlus.Shared.Models.Reserva", b =>
-                {
-                    b.HasOne("CarSharePlus.Shared.Models.Usuario", "Usuario")
-                        .WithMany()
-                        .HasForeignKey("UsuarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+            {
+                b.HasOne("CarSharePlus.Shared.Models.Usuario", "Usuario")
+                    .WithMany("Reservas")
+                    .HasForeignKey("UsuarioId")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
 
-                    b.HasOne("CarSharePlus.Shared.Models.Vehiculo", "Vehiculo")
-                        .WithMany()
-                        .HasForeignKey("VehiculoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                b.HasOne("CarSharePlus.Shared.Models.Vehiculo", "Vehiculo")
+                    .WithMany("Reservas")
+                    .HasForeignKey("VehiculoId")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
 
-                    b.Navigation("Usuario");
+                b.Navigation("Usuario");
+                b.Navigation("Vehiculo");
+            });
 
-                    b.Navigation("Vehiculo");
-                });
-
-=======
->>>>>>> 875207af3e982a6adcdb3d4de98f46b58b45ec4a
             modelBuilder.Entity("CarSharePlus.Shared.Models.Vehiculo", b =>
-                {
-                    b.HasOne("CarSharePlus.Shared.Models.Usuario", "Usuario")
-                        .WithMany("Vehiculos")
-                        .HasForeignKey("UsuarioId")
-                        .OnDelete(DeleteBehavior.Restrict);
+            {
+                b.HasOne("CarSharePlus.Shared.Models.Usuario", "Usuario")
+                    .WithMany("Vehiculos")
+                    .HasForeignKey("UsuarioId")
+                    .OnDelete(DeleteBehavior.Restrict);
 
-                    b.Navigation("Usuario");
-                });
+                b.Navigation("Usuario");
+            });
 
             modelBuilder.Entity("CarSharePlus.Shared.Models.Usuario", b =>
-                {
-                    b.Navigation("Vehiculos");
-                });
+            {
+                b.Navigation("Vehiculos");
+                b.Navigation("Reservas");
+            });
 #pragma warning restore 612, 618
         }
     }

@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:conv="clr-namespace:CarSharePlus.Mobile.Converters"
              x:Class="CarSharePlus.Mobile.Pages.ReservasPage"
+             x:Name="ReservasPageRoot"
              Title="Mis Reservas">
 
     <ContentPage.Resources>
@@ -71,14 +71,14 @@
                                   ColumnDefinitions="*,*"
                                   ColumnSpacing="10">
                                 <Button Text="Editar"
-                                        Command="{Binding BindingContext.EditarReservaCommand, Source={x:Reference Name=ReservasPageRoot}}"
+                                        Command="{Binding BindingContext.EditarReservaCommand, Source={x:Reference ReservasPageRoot}}"
                                         CommandParameter="{Binding .}"
                                         BackgroundColor="#34C759"
                                         TextColor="White"
                                         CornerRadius="8" />
 
                                 <Button Text="Cancelar"
-                                        Command="{Binding BindingContext.CancelarReservaCommand, Source={x:Reference Name=ReservasPageRoot}}"
+                                        Command="{Binding BindingContext.CancelarReservaCommand, Source={x:Reference ReservasPageRoot}}"
                                         CommandParameter="{Binding .}"
                                         BackgroundColor="#FF3B30"
                                         TextColor="White"

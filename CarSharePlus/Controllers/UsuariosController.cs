@@ -28,7 +28,6 @@ namespace CarSharePlus.Controllers
             return View(await usuarios.AsNoTracking().ToListAsync());
         }
 
-
         // GET: Usuarios/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -106,6 +105,10 @@ namespace CarSharePlus.Controllers
                 original.Correo = usuario.Correo;
                 original.Telefono = usuario.Telefono;
 
+                // Liberar vehículos previos si solo quieres permitir uno
+                foreach (var v in original.Vehiculos)
+                    v.UsuarioId = null;
+
                 // Asignar vehículo si se seleccionó
                 if (VehiculoId.HasValue)
                 {
@@ -120,7 +123,8 @@ namespace CarSharePlus.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                return BadRequest("Conflicto de concurrencia al actualizar el usuario.");
+                TempData["ErrorMessage"] = "Conflicto de concurrencia al actualizar el usuario.";
+                return View(usuario);
             }
         }
 
@@ -144,8 +148,14 @@ namespace CarSharePlus.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var usuario = await _context.Usuarios.FindAsync(id);
+            var usuario = await _context.Usuarios.Include(u => u.Vehiculos).FirstOrDefaultAsync(u => u.Id == id);
             if (usuario == null) return NotFound($"No se encontró el usuario con ID {id}.");
+
+            if (usuario.Vehiculos.Any())
+            {
+                TempData["ErrorMessage"] = "No se puede eliminar un usuario con vehículos asociados.";
+                return RedirectToAction(nameof(Index));
+            }
 
             try
             {
@@ -156,7 +166,8 @@ namespace CarSharePlus.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest($"Error al eliminar usuario: {ex.Message}");
+                TempData["ErrorMessage"] = $"Error al eliminar usuario: {ex.Message}";
+                return RedirectToAction(nameof(Index));
             }
         }
     }

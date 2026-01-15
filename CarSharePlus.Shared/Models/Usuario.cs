@@ -20,12 +20,10 @@ namespace CarSharePlus.Shared.Models
         [RegularExpression(@"^\+?\d{7,20}$", ErrorMessage = "Formato de teléfono inválido (ej: +593987654321)")]
         public string Telefono { get; set; }
 
-        // Relación: un usuario puede tener varios vehículos
-<<<<<<< HEAD
-        public ICollection<Vehiculo> Vehiculos { get; set; } = new List<Vehiculo>(); 
-        public ICollection<Reserva> Reservas { get; set; } = new List<Reserva>();
-=======
+        // Relación: un usuario puede tener varios vehículos, reservas, evaluaciones y solicitudes
         public ICollection<Vehiculo> Vehiculos { get; set; } = new List<Vehiculo>();
->>>>>>> 875207af3e982a6adcdb3d4de98f46b58b45ec4a
+        public ICollection<Reserva> Reservas { get; set; } = new List<Reserva>();
+        public ICollection<Evaluacion> Evaluaciones { get; set; } = new List<Evaluacion>();
+        public ICollection<Solicitud> Solicitudes { get; set; } = new List<Solicitud>();
     }
 }

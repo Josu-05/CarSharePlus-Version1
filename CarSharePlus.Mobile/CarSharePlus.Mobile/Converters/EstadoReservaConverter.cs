@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using Microsoft.Maui.Controls;
-using Microsoft.Maui.Graphics; // ✅ Importa los colores correctos
+using Microsoft.Maui.Graphics;
 using CarSharePlus.Shared.Models;
 
 namespace CarSharePlus.Mobile.Converters
@@ -24,13 +24,6 @@ namespace CarSharePlus.Mobile.Converters
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            return value switch 
-            { 
-                "Gasolina" => "gas_icon.png", "Eléctrico" => "electric_icon.png", _ => "default_icon.png" 
-            };
-        }
-        public object ConvertBack(...)
         {
             throw new NotImplementedException();
         }

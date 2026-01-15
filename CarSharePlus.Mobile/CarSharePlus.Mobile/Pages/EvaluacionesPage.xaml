@@ -2,7 +2,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CarSharePlus.Mobile.EvaluacionesPage"
+             x:Name="EvaluacionesPage"
              Title="EvaluacionesPage">
+
     <VerticalStackLayout Padding="20">
         <Label Text="Mis Evaluaciones" FontSize="24" FontAttributes="Bold" />
 
@@ -15,14 +17,22 @@
                             <Label Text="Calificación: {Binding Calificacion}" />
                             <Label Text="Comentario: {Binding Comentario}" />
                             <Label Text="Fecha: {Binding Fecha, StringFormat='{0:dd/MM/yyyy}'}" />
-                            <Button Text="Editar" Command="{Binding Source={RelativeSource AncestorType={x:Type local:EvaluacionesViewModel}}, Path=EditarCommand}" CommandParameter="{Binding .}" />
-                            <Button Text="Solicitar Eliminación" Command="{Binding Source={RelativeSource AncestorType={x:Type local:EvaluacionesViewModel}}, Path=EliminarCommand}" CommandParameter="{Binding .}" BackgroundColor="Red" TextColor="White" />
+                            <Button Text="Editar"
+                                    Command="{Binding Source={x:Reference EvaluacionesPage}, Path=BindingContext.EditarCommand}"
+                                    CommandParameter="{Binding .}" />
+                            <Button Text="Solicitar Eliminación"
+                                    Command="{Binding Source={x:Reference EvaluacionesPage}, Path=BindingContext.EliminarCommand}"
+                                    CommandParameter="{Binding .}"
+                                    BackgroundColor="Red"
+                                    TextColor="White" />
                         </VerticalStackLayout>
                     </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
 
-        <Button Text="Agregar Evaluación" Command="{Binding AgregarCommand}" Margin="0,20,0,0" />
+        <Button Text="Agregar Evaluación"
+                Command="{Binding AgregarCommand}"
+                Margin="0,20,0,0" />
     </VerticalStackLayout>
 </ContentPage>
